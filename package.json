@@ -1,7 +1,7 @@
 {
-    "name": "nutritrack",
-    "version": "1.1.0",
-    "description": "NutriTrack - A customizable landing page theme built with AstroJS and TailwindCSS, specifically designed for Notion creators.",
+    "name": "checkavailability",
+    "version": "1.0",
+    "description": "Tranquility Place - Check Availability",
     "main": "index.js",
     "private": true,
     "repository": {
@@ -26,13 +26,19 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
         "@fortawesome/fontawesome-svg-core": "^6.2.1",
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@headlessui/react": "^1.7.14",
         "@iconify/react": "^4.0.1",
+        "@mui/icons-material": "^5.14.18",
+        "@mui/material": "^5.14.18",
+        "@mui/x-date-pickers": "^6.18.2",
         "@next/font": "^13.1.2",
         "@vercel/og": "^0.0.21",
+        "dayjs": "^1.11.10",
         "eslint-config-next": "13.1.2",
         "framer-motion": "^10.11.2",
         "micro-cors": "^0.1.1",
@@ -44,9 +50,10 @@
         "openai": "^3.2.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-hot-toast": "^2.4.0",
         "resize-observer-polyfill": "^1.5.1",
-        "uuid": "^8.3.2",
-        "react-hot-toast": "^2.4.0"
+        "sonner": "^1.2.4",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",

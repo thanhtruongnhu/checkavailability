@@ -1,66 +1,46 @@
-import { BadgeGroup, BadgeIcon, BadgeMessage } from "@components/Badge";
-import { Button, ButtonGroup } from "@components/Button";
-import { Content } from "@components/Content";
-import { MotionBTTContainer, MotionInfiniteImage } from "@components/Motion";
-import { SectionContainer } from "@components/Section";
-import { PageTitle } from "@components/Title";
-import { Icon } from "@iconify/react";
-import Image from "next/image";
-
 export const HomeBanner = () => {
     return (
-        <SectionContainer className="page-banner--container py-16">
-            <SectionContainer className="page-banner--inner-container wrap wrap-px z-10">
-                {/* Appear First */}
-                <MotionBTTContainer transition={{ delay: 0.2, duration: 0.5 }}>
-                    <BadgeGroup alignment="center">
-                        <BadgeMessage>Discover NutriTrack!</BadgeMessage>
-                        <BadgeIcon icon="game-icons:meal" />
-                    </BadgeGroup>
-                </MotionBTTContainer>
-                {/* Appear Second */}
-                <MotionBTTContainer transition={{ delay: 0.4, duration: 0.5 }}>
-                    <PageTitle className="text-center mx-auto" type="heavy">
-                        The effortless way to plan your meals with the power of
-                        Notion.
-                    </PageTitle>
-                </MotionBTTContainer>
-                {/* Appear Third */}
-                <MotionBTTContainer transition={{ delay: 0.6, duration: 0.5 }}>
-                    <Content className="text-center" alignment="center">
-                        <p>
-                            Streamline your nutrition journey and achieve your
-                            health goals with ease.{" "}
-                        </p>
-                    </Content>
-                    <div className="mt-6 mb-16 text-center">
-                        <ButtonGroup alignment="center">
-                            <Button href="#features">Features</Button>
-                            <a
-                                role="button"
-                                href="https://github.com/christian-luntok/nutritrack"
-                                className="btn btn--secondary"
-                            >
-                                Get Template
-                                <Icon icon="material-symbols:arrow-forward-rounded" />
-                            </a>
-                        </ButtonGroup>
-                    </div>
-                </MotionBTTContainer>
-                {/* Appear Fourth */}
-                <MotionBTTContainer transition={{ delay: 0.8, duration: 0.5 }}>
-                    <div className="page-banner--image">
-                        <Image
-                            src="/nutritrack-hero-banner.png"
-                            width={1024}
-                            height={680}
-                            alt="Page Banner"
-                            objectFit="cover"
-                            className="mx-auto"
-                        />
-                    </div>
-                </MotionBTTContainer>
-            </SectionContainer>
-        </SectionContainer>
+        <div
+            className="hero-section bg-cover bg-center text-white py-20 px-4 custom-hero-height relative"
+            style={{
+                backgroundImage: `url('/banner1.jpg')`,
+                height: "353.81px"
+            }}
+        >
+            {/* Semi-transparent overlay */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+
+            <div className="container mx-auto flex flex-col items-center justify-center h-full relative z-10">
+                {/* Logo */}
+                <img
+                    src={"/whitetranquilitylogo.png"}
+                    alt="Tranquility Place"
+                    className="h-16" // Adjusted class
+                />
+                {/* Divider */}
+                <div
+                    className="custom-divider-width"
+                    style={{
+                        borderTop: "1px solid white"
+                        // margin: "3rem 0"
+                    }}
+                />
+                {/* Check Availability */}
+                <h1
+                    className="py-2 px-4 text-center md:text-left" // Text center on small, left align on medium and up
+                    style={{
+                        fontFamily: '"Montserrat", sans-serif',
+                        fontWeight: "500",
+                        fontSize: "30px",
+                        letterSpacing: "12px",
+                        textTransform: "uppercase",
+                        whiteSpace: "nowrap" // Ensures single line on medium and up
+                    }}
+                >
+                    Check
+                    <br className="md:hidden" /> Availability
+                </h1>
+            </div>
+        </div>
     );
 };

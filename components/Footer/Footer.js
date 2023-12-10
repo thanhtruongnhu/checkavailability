@@ -1,147 +1,136 @@
-import { SectionContainer } from "@components/Section";
-import Link from "next/link";
 import Image from "next/image";
-import { ButtonGroup } from "@components/Button";
-import { Icon } from "@iconify/react";
-
-const DATA = [
-    {
-        title: "Template",
-        items: [
-            {
-                label: "Features",
-                href: "#features"
-            },
-            {
-                label: "Testimonials",
-                href: "#testimonials"
-            },
-            {
-                label: "FAQ",
-                href: "#faq"
-            }
-        ]
-    },
-    {
-        title: "Company",
-        items: [
-            {
-                label: "About",
-                href: "https://github.com/christian-luntok/",
-                target: "_blank"
-            },
-            {
-                label: "Twitter",
-                href: "https://github.com/christian-luntok/",
-                target: "_blank"
-            },
-            {
-                label: "Instagram",
-                href: "https://github.com/christian-luntok/",
-                target: "_blank"
-            },
-            {
-                label: "Facebook",
-                href: "https://github.com/christian-luntok/",
-                target: "_blank"
-            }
-        ]
-    }
-];
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PhoneIcon from "@mui/icons-material/Phone";
+import HomeIcon from "@mui/icons-material/Home";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 export const Footer = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-
     return (
-        <footer id="footer" className="bg-white">
-            {/* Footer Links */}
-            <SectionContainer className="footer--container wrap wrap-px relative z-10">
-                <div className="footer--content-container py-16">
-                    <div className="footer-links mb-12 grid grid-cols-2 gap-8 md:mb-16 md:grid-cols-8 lg:grid-cols-12">
-                        <div className="col-span-6">
-                            <div className="footer--logo grid gap-8">
-                                <Link href="/">
-                                    <Image
-                                        src="/nutritrack.svg"
-                                        alt="logo"
-                                        className="h-10 w-auto"
-                                        height="25"
-                                        width="100"
-                                        priority
-                                    />
-                                </Link>
-                                {/* Get Template button; remove if not used */}
-                                <ButtonGroup alignment="left">
-                                    <a
-                                        role="button"
-                                        href="https://github.com/christian-luntok/nutritrack"
-                                        className="btn btn--secondary"
-                                    >
-                                        Get Template
-                                        <Icon icon="material-symbols:arrow-forward-rounded" />
-                                    </a>
-                                </ButtonGroup>
-                            </div>
+        <div>
+            <footer className="bg-white text-gray-800 p-4">
+                <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center mb-10">
+                    <div className="flex flex-col w-full md:w-1/3 mb-0">
+                        <span
+                            className="text-2xl text-[#a0c020] mb-4"
+                            style={{
+                                fontFamily: '"Montserrat", sans-serif',
+                                fontWeight: 600,
+                                letterSpacing: "0.1rem"
+                            }}
+                        >
+                            CONTACT
+                        </span>
+                        <span className="mb-2">
+                            President: Tuyet (Sunny) Tran Thi
+                        </span>
+                        <div className="flex items-center mb-2">
+                            <AlternateEmailIcon />
+                            <a
+                                href="mailto:tranquilityplacepei@gmail.com"
+                                className="ml-2 hover:text-blue-500"
+                            >
+                                tranquilityplacepei@gmail.com
+                            </a>
                         </div>
-                        <div className="col-span-6">
-                            <div className="footer-menu grid grid-cols-2 md:grid-cols-8 lg:grid-cols-12">
-                                {DATA.map((footerLinks) => (
-                                    <div
-                                        key={footerLinks.title}
-                                        className="footer-menu--container col-span-1 md:col-span-4"
-                                    >
-                                        <h3 className="font-bold text-base mb-2">
-                                            {footerLinks.title}
-                                        </h3>
-                                        <ul className="footer-menu--list">
-                                            {footerLinks.items.map(
-                                                (footerItem) => (
-                                                    <li
-                                                        key={footerItem.label}
-                                                        className="footer-menu--list-item gap-2"
-                                                    >
-                                                        <a
-                                                            className="mb-2 block w-auto font-medium transition-colors duration-300 hover:underline"
-                                                            href={
-                                                                footerItem.href
-                                                            }
-                                                            target={
-                                                                footerItem.target
-                                                            }
-                                                        >
-                                                            {footerItem.label}
-                                                        </a>
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="flex items-center mb-2">
+                            <AlternateEmailIcon />
+                            <a
+                                href="mailto:sunny.bythebaycottages.ca@gmail.com"
+                                className="ml-2 hover:text-blue-500"
+                            >
+                                sunny.bythebaycottages.ca@gmail.com
+                            </a>
+                        </div>
+                        <div className="flex items-center mb-2">
+                            <PhoneIcon />
+                            <a
+                                href="tel:18004047755"
+                                className="ml-2 hover:text-blue-500"
+                            >
+                                Toll free: 1-800-404-7755
+                            </a>
+                        </div>
+                        <div className="flex items-center mb-2">
+                            <PhoneIcon />
+                            <a
+                                href="tel:9023146827"
+                                className="ml-2 hover:text-blue-500"
+                            >
+                                Cell: 902-314-6827
+                            </a>
+                        </div>
+                        <div className="flex items-center">
+                            <PhoneIcon />
+                            <a
+                                href="tel:9026722307"
+                                className="ml-2 hover:text-blue-500"
+                            >
+                                Tel: 902-672-2307
+                            </a>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-full md:w-1/3 mt-16 mb-5 md:mb-0 ">
+                        <div className="flex items-center mb-2">
+                            <HomeIcon />
+                            <span className="ml-2">
+                                2 Birchwood Lane, Stratford, PEI C1B 3Z1
+                            </span>
+                        </div>
+                        <div className="flex items-center mb-2">
+                            <MailOutlineIcon />
+                            <span className="ml-2">
+                                Mailing address: 2 Birchwood Lane, Stratford PE
+                                C1B 3Z1
+                            </span>
+                        </div>
+                        <div className="flex items-center mb-4">
+                            <FacebookIcon />
+                            <a
+                                href="https://www.facebook.com/tranquilityplacepei/"
+                                className="hover:text-blue-500 ml-2"
+                            >
+                                Facebook
+                            </a>
+                        </div>
+                        <div className="flex justify-center md:justify-start">
+                            <Image
+                                src="/peacelogo.png"
+                                alt="PEACE Logo"
+                                width={200}
+                                height={150}
+                            />
+                        </div>
+                    </div>
+                    <div className="w-full md:w-auto flex flex-col items-center">
+                        {/* Replace with your actual image path and adjust the width and height accordingly */}
+                        {/* <div className="flex items-center mb-10">
+                        <Image
+                            src="/peacelogo.png"
+                            alt="PEACE Logo"
+                            width={150}
+                            height={150}
+                        />
+                    </div> */}
+                        <div className="flex items-center mb-2">
+                            <Image
+                                src="/cbrblogo.jpeg"
+                                alt="PEACE Logo"
+                                width={280}
+                                height={150}
+                            />
                         </div>
                     </div>
                 </div>
-            </SectionContainer>
-            {/* Footer Credits */}
-            <SectionContainer className="footer-credits relative z-10">
-                <div className="wrap wrap-px py-6">
-                    <p className="my-0">
-                        © {year} Nutritrack. All rights reserved{" - "}
-                        <span className="font-normal">
-                            A template by{" "}
-                            <Link
-                                className="transition-colors duration-300 hover:underline"
-                                href="https://chrstnl.com"
-                                target="_blank"
-                            >
-                                chrstnl.
-                            </Link>
-                        </span>
-                    </p>
+                <div className="text-center text-xs mt-4">
+                    © Tranquility Place. All Rights Reserved.
                 </div>
-            </SectionContainer>
-            <div className="footer--background"></div>
-        </footer>
+            </footer>
+            {/* Green line at the end of the footer */}
+            <div
+                className="w-full h-3"
+                style={{ backgroundColor: "#a0c020" }}
+            ></div>
+        </div>
     );
 };

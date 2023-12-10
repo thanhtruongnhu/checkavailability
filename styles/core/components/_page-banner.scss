@@ -13,4 +13,65 @@
             // @apply absolute left-0 top-0 right-0 bottom-0 -z-[1] h-screen bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-red-200 via-indigo-700 to-green-400;
         }
     }
+    /* Apply these styles to your component or in a CSS file */
+
+    .hero-banner {
+        width: 100%;
+        height: 40vh;
+        background-image: url("/banner2.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem; /* Adjust the font size for mobile */
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.25rem; /* Adjust the font size for mobile */
+    }
+
+    // /* Responsive utility classes for smaller screens */
+    // @media (min-width: 640px) {
+    //     .hero-content h1 {
+    //         font-size: 3rem; /* Adjust the font size for larger screens */
+    //     }
+
+    //     .hero-content p {
+    //         font-size: 1.5rem; /* Adjust the font size for larger screens */
+    //     }
+    // }
+
+    @media (min-width: 300px) {
+        .custom-divider-width {
+            width: 300px; // 50% of the viewport height
+            margin: 3rem 0;
+        }
+    }
+
+    @media (min-width: 553px) {
+        .custom-divider-width {
+            width: 500px; // 50% of the viewport height
+            margin: 3rem 0;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .hero-section h1 {
+            white-space: normal; /* Allow wrapping on small screens */
+        }
+        .custom-divider-width {
+            margin: 1rem 0;
+        }
+    }
 }

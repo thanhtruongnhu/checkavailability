@@ -4,14 +4,20 @@ import { Icon } from "@iconify/react";
 import { useRouter } from "next/router";
 
 const navigation = [
-    { name: "Features", to: "#features", href: "/#features" },
-    { name: "Testimonials", to: "#testimonials", href: "/#testimonials" },
-    { name: "FAQ?", to: "#faq", href: "/#faq" },
     {
-        name: "Contact",
-        href: "https://chrstnl.com/",
-        isArrow: true,
-        target: "_blank"
+        name: "SUITES",
+        href: "https://tranquilityplacepei.ca/suites/"
+        // target: "_blank"
+    },
+    {
+        name: "PRICING",
+        href: "https://tranquilityplacepei.ca/pricing/"
+        // target: "_blank"
+    },
+    {
+        name: "CHECK AVAILABILITY",
+        href: "http://localhost:3001/"
+        // target: "_blank"
     }
 ];
 
@@ -55,21 +61,15 @@ export const Nav = () => {
                                     key={item.name}
                                     to={item.to}
                                     href={item.href}
-                                    className={`menu-item--link flex items-center
-                    ${router.pathname === item.href ? "active" : ""}
-                  `}
+                                    className={`menu-item--link flex items-center ${
+                                        item.name === "CHECK AVAILABILITY"
+                                            ? "custom-color"
+                                            : ""
+                                    }`}
                                     onClick={closeNav}
                                     target={item.target ? item.target : "_self"}
                                 >
                                     {item.name}
-                                    {item.isArrow && (
-                                        <span className="ml-2 inline-block text-sm font-medium text-inherit">
-                                            <Icon
-                                                icon="material-symbols:arrow-outward"
-                                                className="h-6 w-auto"
-                                            />
-                                        </span>
-                                    )}
                                 </a>
                             </li>
                         ))}
