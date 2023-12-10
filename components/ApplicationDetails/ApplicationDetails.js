@@ -659,7 +659,7 @@ const ApplicationDetails = ({ data }) => {
                                 {formData.tenants[0].addresses.length > 0 ? (
                                     formData.tenants[0].addresses.map(
                                         (address, index) => (
-                                            <Box marginTop={8}>
+                                            <Box marginTop={8} key={index}>
                                                 <Box
                                                     sx={{
                                                         // This applies to all immediate children of the Box component
@@ -1346,7 +1346,7 @@ const ApplicationDetails = ({ data }) => {
                                                             }}
                                                         >
                                                             Occupant {index + 1}
-                                                            's full name
+                                                            &apos;s full name
                                                         </FormHelperText>
                                                         <TextField
                                                             fullWidth
@@ -1906,7 +1906,7 @@ const ApplicationDetails = ({ data }) => {
                                             color: "#11142d"
                                         }}
                                     >
-                                        Supervisor's Phone number
+                                        Supervisor&apos;s Phone number
                                     </FormHelperText>
                                     <TextField
                                         fullWidth

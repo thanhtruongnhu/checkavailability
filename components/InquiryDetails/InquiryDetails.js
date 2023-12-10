@@ -150,7 +150,7 @@ const InquiryDetails = ({ data }) => {
                                         variant="h5"
                                         className="font-bold mb-4"
                                     >
-                                        We're always happy to answer!
+                                        We&apos;re always happy to answer!
                                     </Typography>
                                     <Typography
                                         variant="h7"
