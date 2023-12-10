@@ -277,7 +277,6 @@ const InquiryDetails = ({ data }) => {
                                         }
                                     />
                                 </FormControl>
-
                                 <FormControl sx={{ flex: 1 }} fullWidth>
                                     <FormHelperText
                                         sx={{
