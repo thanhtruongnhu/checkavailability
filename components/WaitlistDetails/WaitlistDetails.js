@@ -32,6 +32,7 @@ import {
     proxy
 } from "@utils/helper";
 import { toast, Toaster } from "sonner";
+import useValidationWaitlist from "@utils/useValidationWaitlist";
 
 function getCurrentDateAsString() {
     const currentDate = new Date();
@@ -42,7 +43,7 @@ const WaitlistDetails = ({ data }) => {
     const router = useRouter();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const initialInquiryDetails = {
+    const initialWaitlistDetails = {
         waitlist: [
             {
                 firstName: "",
@@ -56,7 +57,7 @@ const WaitlistDetails = ({ data }) => {
         ]
     };
 
-    const [formData, setFormData] = useState(initialInquiryDetails);
+    const [formData, setFormData] = useState(initialWaitlistDetails);
 
     const handleFieldChange = (fieldName, value) => {
         const mappedValue =
@@ -80,26 +81,22 @@ const WaitlistDetails = ({ data }) => {
         });
     };
 
-    // const handleCreateWaitlist = async () => {
-    //     fetch(`/api/checkAvailability/addToWaitlist/${data}`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //             // Include other headers as needed
-    //         },
-    //         body: processWaitlistData(formData)
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error:", error);
-    //         });
-    // };
+    const { errors, validateForm } = useValidationWaitlist();
 
     const handleCreateWaitlist = async () => {
-        // event.preventDefault(); // Prevent the default form submission
+        const validationErrors = validateForm(formData);
+
+        if (Object.keys(validationErrors).length) {
+            // Generic missing data error
+            toast.error(
+                "Please fill in all required info before submitting your wait-list request!",
+                {
+                    position: "top-center"
+                }
+            );
+
+            return;
+        }
         try {
             const response = await fetch(
                 `${proxy}/checkAvailability/addToWaitlist/${data}`,
@@ -234,6 +231,8 @@ const WaitlistDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.firstName ? true : false}
+                                        helperText={errors?.firstName}
                                     />
                                 </FormControl>
                                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -254,15 +253,14 @@ const WaitlistDetails = ({ data }) => {
                                         color="info"
                                         variant="outlined"
                                         value={formData.waitlist[0].lastName}
-                                        // onChange={(e) =>
-                                        //   handleNestedFieldChange("lastName", e.target.value)
-                                        // }
                                         onChange={(e) =>
                                             handleFieldChange(
                                                 `waitlist.0.lastName`,
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.lastName ? true : false}
+                                        helperText={errors?.lastName}
                                     />
                                 </FormControl>
                             </Stack>
@@ -295,6 +293,8 @@ const WaitlistDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.email ? true : false}
+                                        helperText={errors?.email}
                                     />
                                 </FormControl>
 
@@ -322,6 +322,10 @@ const WaitlistDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={
+                                            errors?.phoneNumber ? true : false
+                                        }
+                                        helperText={errors?.phoneNumber}
                                     />
                                 </FormControl>
                             </Stack>
@@ -349,10 +353,18 @@ const WaitlistDetails = ({ data }) => {
                                             newValue ? newValue.format() : ""
                                         )
                                     }
+                                    error={errors?.desiredDate ? true : false}
+                                    disablePast
                                 />
                             </Stack>
 
-                            <FormControl sx={{ flex: 1 }} fullWidth>
+                            <FormControl
+                                sx={{ flex: 1 }}
+                                fullWidth
+                                error={errors?.message ? true : false}
+                                component="fieldset"
+                                variant="outlined"
+                            >
                                 <FormHelperText
                                     sx={{
                                         fontWeight: 500,
@@ -382,6 +394,9 @@ const WaitlistDetails = ({ data }) => {
                                         )
                                     }
                                 />
+                                <FormHelperText>
+                                    {errors?.message}
+                                </FormHelperText>
                             </FormControl>
                         </Box>
 

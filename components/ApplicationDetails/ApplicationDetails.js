@@ -18,9 +18,7 @@ import VehicleForm from "./subforms/VehicleForm";
 import EmploymentForm from "./subforms/EmploymentForm";
 import ReferencesForm from "./subforms/ReferencesForm";
 import EmergencyContactForm from "./subforms/EmergencyContactForm";
-import { useForm } from "react-hook-form";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import useValidation from "@utils/useValidation";
+import useValidationApplication from "@utils/useValidationApplication";
 
 function getCurrentDateAsString() {
     const currentDate = new Date();
@@ -127,7 +125,7 @@ const ApplicationDetails = ({ data }) => {
         });
     };
 
-    const { errors, validateForm } = useValidation();
+    const { errors, validateForm } = useValidationApplication();
 
     const handleUpdateRoom = async () => {
         const validationErrors = validateForm(formData, uploadedFile);

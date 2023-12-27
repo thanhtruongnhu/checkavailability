@@ -16,6 +16,7 @@ import CustomButton from "@components/CustomComponents/CustomButton";
 import { useRouter } from "next/router";
 import { getSuiteName, processInquiryData, proxy } from "@utils/helper";
 import { Toaster, toast } from "sonner";
+import useValidationInquiry from "@utils/useValidationInquiry";
 
 function getCurrentDateAsString() {
     const currentDate = new Date();
@@ -63,26 +64,22 @@ const InquiryDetails = ({ data }) => {
         });
     };
 
-    // const handleCreateInquiry = async () => {
-    //     fetch(`/api/checkAvailability/addToInquiry/${data}`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //             // Include other headers as needed
-    //         },
-    //         body: processInquiryData(formData)
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error:", error);
-    //         });
-    // };
+    const { errors, validateForm } = useValidationInquiry();
 
     const handleCreateInquiry = async () => {
-        // event.preventDefault(); // Prevent the default form submission
+        const validationErrors = validateForm(formData);
+
+        if (Object.keys(validationErrors).length) {
+            // Generic missing data error
+            toast.error(
+                "Please fill in all required info before submitting your inquiry!",
+                {
+                    position: "top-center"
+                }
+            );
+
+            return;
+        }
         try {
             const response = await fetch(
                 `${proxy}/checkAvailability/addToInquiry/${data}`,
@@ -214,6 +211,8 @@ const InquiryDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.firstName ? true : false}
+                                        helperText={errors?.firstName}
                                     />
                                 </FormControl>
                                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -234,15 +233,14 @@ const InquiryDetails = ({ data }) => {
                                         color="info"
                                         variant="outlined"
                                         value={formData.inquiry[0].lastName}
-                                        // onChange={(e) =>
-                                        //   handleNestedFieldChange("lastName", e.target.value)
-                                        // }
                                         onChange={(e) =>
                                             handleFieldChange(
                                                 `inquiry.0.lastName`,
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.lastName ? true : false}
+                                        helperText={errors?.lastName}
                                     />
                                 </FormControl>
                             </Stack>
@@ -275,6 +273,8 @@ const InquiryDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={errors?.email ? true : false}
+                                        helperText={errors?.email}
                                     />
                                 </FormControl>
                                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -301,11 +301,21 @@ const InquiryDetails = ({ data }) => {
                                                 e.target.value
                                             )
                                         }
+                                        error={
+                                            errors?.phoneNumber ? true : false
+                                        }
+                                        helperText={errors?.phoneNumber}
                                     />
                                 </FormControl>
                             </Stack>
 
-                            <FormControl sx={{ flex: 1 }} fullWidth>
+                            <FormControl
+                                sx={{ flex: 1 }}
+                                fullWidth
+                                error={errors?.inquiryMessage ? true : false}
+                                component="fieldset"
+                                variant="outlined"
+                            >
                                 <FormHelperText
                                     sx={{
                                         fontWeight: 500,
@@ -314,7 +324,7 @@ const InquiryDetails = ({ data }) => {
                                         color: "#11142d"
                                     }}
                                 >
-                                    Your question (limit: 200 words)
+                                    Your questions (limit: 200 words)
                                 </FormHelperText>
                                 <TextareaAutosize
                                     minRows={5}
@@ -335,6 +345,9 @@ const InquiryDetails = ({ data }) => {
                                         )
                                     }
                                 />
+                                <FormHelperText>
+                                    {errors?.inquiryMessage}
+                                </FormHelperText>
                             </FormControl>
                         </Box>
 

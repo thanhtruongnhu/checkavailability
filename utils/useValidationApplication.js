@@ -8,7 +8,7 @@ import {
     validateEmergencyContactInfo
 } from "./validation";
 
-const useValidation = () => {
+const useValidationApplication = () => {
     const [errors, setErrors] = useState({});
 
     const validateForm = (formData, uploadedFile) => {
@@ -64,4 +64,4 @@ const useValidation = () => {
     return { errors, validateForm };
 };
 
-export default useValidation;
+export default useValidationApplication;
