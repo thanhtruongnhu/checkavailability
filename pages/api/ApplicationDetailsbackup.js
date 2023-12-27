@@ -20,7 +20,6 @@ import ReferencesForm from "./subforms/ReferencesForm";
 import EmergencyContactForm from "./subforms/EmergencyContactForm";
 import { useForm } from "react-hook-form";
 import { faL } from "@fortawesome/free-solid-svg-icons";
-import useValidation from "@utils/useValidation";
 
 function getCurrentDateAsString() {
     const currentDate = new Date();
@@ -127,17 +126,113 @@ const ApplicationDetails = ({ data }) => {
         });
     };
 
-    const { errors, validateForm } = useValidation();
+    // const { register, handleSubmit } = useForm();
+
+    const [fnameError, setFNameError] = useState("");
+    const [lnameError, setLNameError] = useState("");
+    const [dobError, setDobError] = useState("");
+    const [phoneError, setPhoneError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [licenseError, setLicenseError] = useState("");
+    const [provinceError, setProvinceError] = useState("");
+    const [moveinDateError, setMoveinDateError] = useState("");
+
+    const handleProcessForm = async () => {
+        let insanity = false;
+        // First name validation
+        if (
+            !formData.tenants[0].firstName ||
+            !formData.tenants[0].firstName.length
+        ) {
+            setFNameError("First name is required");
+            insanity = true;
+        } else {
+            setFNameError("");
+        }
+        // Last name validation
+        if (
+            !formData.tenants[0].lastName ||
+            !formData.tenants[0].lastName.length
+        ) {
+            setLNameError("Last name is required");
+            insanity = true;
+        } else {
+            setLNameError("");
+        }
+        // DOB validation
+        if (!formData.tenants[0].dob || !formData.tenants[0].dob.length) {
+            setDobError("Date of birth is required");
+            insanity = true;
+        } else {
+            setDobError("");
+        }
+        // phone validation
+        if (
+            !formData.tenants[0].phoneNumber ||
+            !formData.tenants[0].phoneNumber.length
+        ) {
+            setPhoneError("Phone number is required");
+            insanity = true;
+        } else {
+            setPhoneError("");
+        }
+        // Email validation
+        if (!formData.tenants[0].email || !formData.tenants[0].email.length) {
+            setEmailError("Email is required");
+            insanity = true;
+        } else {
+            setEmailError("");
+        }
+        // Driver license validation
+        if (
+            !formData.tenants[0].driverLicense ||
+            !formData.tenants[0].driverLicense.length
+        ) {
+            setLicenseError("Driver license is required");
+            insanity = true;
+        } else {
+            setLicenseError("");
+        }
+        // Province validation
+        if (
+            !formData.tenants[0].province ||
+            !formData.tenants[0].province.length
+        ) {
+            setProvinceError("Province is required");
+            insanity = true;
+        } else {
+            setProvinceError("");
+        }
+        // Move in date validation
+        if (
+            !formData.tenants[0].moveInDate ||
+            !formData.tenants[0].moveInDate.length
+        ) {
+            setMoveinDateError("Desired move-in date is required");
+            insanity = true;
+        } else {
+            setMoveinDateError("");
+        }
+
+        if (insanity) {
+            return false;
+        }
+        return true;
+    };
 
     const handleUpdateRoom = async () => {
-        if (!validateForm(formData)) {
+        // event.preventDefault(); // Prevent the default form submission
+        const shouldContinue = await handleProcessForm();
+
+        if (!shouldContinue) {
+            // Terminate if handleProcessForm returned false
             toast.error(
-                "Please fill in all required info before submit your application!",
+                "Oops! Please fill in all required info before Sending your application!",
                 {
                     position: "top-center"
                 }
             );
-            return; // Exit here if all required fields are not filled.
+            return;
         }
         const sendingData = new FormData();
         // Append the file to the formData object
@@ -268,10 +363,6 @@ const ApplicationDetails = ({ data }) => {
                                     until you finish filling the form and
                                     Submit.
                                 </ListItem>
-                                <ListItem>
-                                    4. Please fill in all required fields with
-                                    asterisk *
-                                </ListItem>
                             </List>
                         </div>
                         <Divider className="mt-4 mb-8" />
@@ -280,14 +371,14 @@ const ApplicationDetails = ({ data }) => {
                             formData={formData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
-                            fnameError={errors.firstName}
-                            lnameError={errors.lastName}
-                            dobError={errors.dob}
-                            phoneError={errors.phoneNumber}
-                            emailError={errors.email}
-                            licenseError={errors.driverLicense}
-                            provinceError={errors.province}
-                            moveinDateError={errors.moveInDate}
+                            fnameError={fnameError}
+                            lnameError={lnameError}
+                            dobError={dobError}
+                            phoneError={phoneError}
+                            emailError={emailError}
+                            licenseError={licenseError}
+                            provinceError={provinceError}
+                            moveinDateError={moveinDateError}
                         />{" "}
                         {/* 2. Rental History */}
                         <RentalHistoryForm
@@ -322,16 +413,12 @@ const ApplicationDetails = ({ data }) => {
                         {/* 7. Credit Report */}
                         <Box mt={"60px"} mb={"20px"}>
                             <Typography fontSize={20} fontWeight={700}>
-                                {"7. Proof of Financial Stability"}
+                                {"7. Credit Report"}
                             </Typography>
-                            <ListItem>
-                                Please upload either Credit report or bank
-                                statements.*
-                            </ListItem>
                         </Box>
                         <Box>
                             <CustomButton
-                                title={"Upload*"}
+                                title={"Upload"}
                                 backgroundColor="#40cf38"
                                 color="#FCFCFC"
                                 icon={<PublishIcon />}

@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
+import { ListItem } from "@mui/material";
 const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
     return (
         <Box
@@ -19,6 +20,10 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                 <Typography fontSize={20} fontWeight={700}>
                     {"6. References"}
                 </Typography>
+                <ListItem>
+                    Please list a reference person. This person should not be
+                    your previous landlords or work supervisors.
+                </ListItem>
             </Box>
             <Stack direction={isSmallScreen ? "column" : "row"} gap={4}>
                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -30,7 +35,7 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Full name
+                        Full name*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -56,7 +61,7 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Relation to applicant
+                        Relation to applicant*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -87,7 +92,7 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Email address
+                        Email address*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -113,7 +118,7 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Phone number
+                        Phone number*
                     </FormHelperText>
                     <TextField
                         fullWidth

@@ -34,7 +34,7 @@ const EmergencyContactForm = ({
                             color: "#11142d"
                         }}
                     >
-                        Full name
+                        Full name*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -60,7 +60,7 @@ const EmergencyContactForm = ({
                             color: "#11142d"
                         }}
                     >
-                        Relation to applicant
+                        Relation to applicant*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -91,7 +91,7 @@ const EmergencyContactForm = ({
                             color: "#11142d"
                         }}
                     >
-                        Email address
+                        Email address*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -117,7 +117,7 @@ const EmergencyContactForm = ({
                             color: "#11142d"
                         }}
                     >
-                        Phone number
+                        Phone number*
                     </FormHelperText>
                     <TextField
                         fullWidth

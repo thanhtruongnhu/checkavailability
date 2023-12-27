@@ -16,7 +16,15 @@ import { canadianProvinces } from "@utils/constants";
 const ApplicationInfoForm = ({
     formData,
     handleFieldChange,
-    isSmallScreen
+    isSmallScreen,
+    fnameError,
+    lnameError,
+    dobError,
+    phoneError,
+    emailError,
+    licenseError,
+    provinceError,
+    moveinDateError
 }) => {
     return (
         <Box mt={"20px"}>
@@ -44,7 +52,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            First name
+                            First name*
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -59,6 +67,10 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
+                            error={
+                                fnameError && fnameError.length ? true : false
+                            }
+                            helperText={fnameError}
                         />
                     </FormControl>
                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -70,7 +82,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Last name
+                            Last name*
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -88,6 +100,10 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
+                            error={
+                                lnameError && lnameError.length ? true : false
+                            }
+                            helperText={lnameError}
                         />
                     </FormControl>
                 </Stack>
@@ -104,7 +120,7 @@ const ApplicationInfoForm = ({
                                     color: "#11142d"
                                 }}
                             >
-                                Date of birth
+                                Date of birth*
                             </FormHelperText>
                         </FormControl>
                         <DatePicker
@@ -115,6 +131,8 @@ const ApplicationInfoForm = ({
                                     newValue ? newValue.format() : ""
                                 )
                             }
+                            error={dobError && dobError.length ? true : false}
+                            // helperText={dobError}
                         />
                     </Stack>
                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -126,7 +144,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Phone number
+                            Phone number*
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -144,6 +162,10 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
+                            error={
+                                phoneError && phoneError.length ? true : false
+                            }
+                            helperText={phoneError}
                         />
                     </FormControl>
                 </Stack>
@@ -158,7 +180,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Email address
+                            Email address*
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -173,6 +195,10 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
+                            error={
+                                emailError && emailError.length ? true : false
+                            }
+                            helperText={emailError}
                         />
                     </FormControl>
 
@@ -185,7 +211,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Driver license #
+                            Driver license #*
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -200,6 +226,12 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
+                            error={
+                                licenseError && licenseError.length
+                                    ? true
+                                    : false
+                            }
+                            helperText={licenseError}
                         />
                     </FormControl>
                 </Stack>
@@ -214,7 +246,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Province
+                            Province*
                         </FormHelperText>
                         <Select
                             required
@@ -228,6 +260,12 @@ const ApplicationInfoForm = ({
                             }
                             variant="outlined"
                             color="info"
+                            error={
+                                provinceError && provinceError.length
+                                    ? true
+                                    : false
+                            }
+                            // helperText={provinceError}
                         >
                             {canadianProvinces.map((province, index) => (
                                 <MenuItem key={index} value={province}>
@@ -248,7 +286,7 @@ const ApplicationInfoForm = ({
                                     color: "#11142d"
                                 }}
                             >
-                                Desired move-in date
+                                Desired move-in date*
                             </FormHelperText>
                         </FormControl>
                         <DatePicker
@@ -259,6 +297,12 @@ const ApplicationInfoForm = ({
                                     newValue ? newValue.format() : ""
                                 )
                             }
+                            error={
+                                moveinDateError && moveinDateError.length
+                                    ? true
+                                    : false
+                            }
+                            // helperText={moveinDateError}
                         />
                     </Stack>
                 </Stack>

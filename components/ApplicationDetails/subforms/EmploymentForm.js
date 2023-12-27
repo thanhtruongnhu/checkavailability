@@ -37,7 +37,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Employment status
+                        Employment status*
                     </FormHelperText>
                     <Select
                         required
@@ -71,7 +71,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Employer
+                        Employer*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -104,7 +104,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 color: "#11142d"
                             }}
                         >
-                            Since
+                            Since*
                         </FormHelperText>
                     </FormControl>
                     <DatePicker
@@ -128,7 +128,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Street/City
+                        Street/City*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -157,7 +157,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Province
+                        Province*
                     </FormHelperText>
                     <Select
                         required
@@ -188,7 +188,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Position/Title
+                        Position/Title*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -219,7 +219,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Work Supervisor full-name
+                        Work Supervisor full-name*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -247,7 +247,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Supervisor&apos;s Phone number
+                        Supervisor&apos;s Phone number*
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -278,7 +278,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                         color: "#11142d"
                     }}
                 >
-                    Do you have other sources of income?
+                    Do you have other sources of income?*
                 </FormHelperText>
                 <TextField
                     fullWidth

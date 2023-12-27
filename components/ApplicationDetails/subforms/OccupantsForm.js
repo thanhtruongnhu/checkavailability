@@ -19,32 +19,6 @@ const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
         );
     };
 
-    const handleCreateAddress = (index) => {
-        handleFieldChange(`tenants.0.addresses.${index}.streetNo`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.streetName`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.city`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.province`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.postalCode`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.since`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.to`, "");
-
-        handleFieldChange(`tenants.0.addresses.${index}.paysRent`, false);
-        handleFieldChange(`tenants.0.addresses.${index}.hasGivenNotice`, false);
-        handleFieldChange(
-            `tenants.0.addresses.${index}.hasBeenAskedToLeave`,
-            false
-        );
-        handleFieldChange(`tenants.0.addresses.${index}.reasonForLeaving`, "");
-
-        handleFieldChange(
-            `tenants.0.addresses.${index}.landlord.firstName`,
-            ""
-        );
-        handleFieldChange(`tenants.0.addresses.${index}.landlord.lastName`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.landlord.phone`, "");
-        handleFieldChange(`tenants.0.addresses.${index}.landlord.email`, "");
-    };
-
     const handleDeleteOccupant = (index) => {
         const updatedFormData = { ...formData };
         if (!updatedFormData.tenants) {

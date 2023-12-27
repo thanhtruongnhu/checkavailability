@@ -12,6 +12,31 @@ import dayjs from "dayjs";
 import { ListItem, MenuItem, Select, TextareaAutosize } from "@mui/material";
 import { canadianProvinces } from "@utils/constants";
 const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
+    const handleCreateAddress = (index) => {
+        handleFieldChange(`tenants.0.addresses.${index}.streetNo`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.streetName`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.city`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.province`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.postalCode`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.since`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.to`, "");
+
+        handleFieldChange(`tenants.0.addresses.${index}.paysRent`, false);
+        handleFieldChange(`tenants.0.addresses.${index}.hasGivenNotice`, false);
+        handleFieldChange(
+            `tenants.0.addresses.${index}.hasBeenAskedToLeave`,
+            false
+        );
+        handleFieldChange(`tenants.0.addresses.${index}.reasonForLeaving`, "");
+
+        handleFieldChange(
+            `tenants.0.addresses.${index}.landlord.firstName`,
+            ""
+        );
+        handleFieldChange(`tenants.0.addresses.${index}.landlord.lastName`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.landlord.phone`, "");
+        handleFieldChange(`tenants.0.addresses.${index}.landlord.email`, "");
+    };
     return (
         <Box mt={"60px"}>
             <Box mb={"20px"}>
@@ -55,7 +80,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            No.
+                                            No.*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -81,7 +106,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Street Name
+                                            Street Name*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -113,7 +138,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            City
+                                            City*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -140,7 +165,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Province
+                                            Province*
                                         </FormHelperText>
                                         <Select
                                             required
@@ -178,7 +203,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                             color: "#11142d"
                                         }}
                                     >
-                                        Postal Code
+                                        Postal Code*
                                     </FormHelperText>
                                     <TextField
                                         fullWidth
@@ -211,7 +236,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     color: "#11142d"
                                                 }}
                                             >
-                                                Since
+                                                Since*
                                             </FormHelperText>
                                         </FormControl>
                                         <DatePicker
@@ -236,7 +261,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     color: "#11142d"
                                                 }}
                                             >
-                                                To
+                                                To*
                                             </FormHelperText>
                                         </FormControl>
                                         <DatePicker
@@ -267,7 +292,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Have you given notice?
+                                            Have you given notice?*
                                         </FormHelperText>
                                         <Select
                                             required
@@ -298,7 +323,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Have you been asked to leave?
+                                            Have you been asked to leave?*
                                         </FormHelperText>
                                         <Select
                                             required
@@ -331,7 +356,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                         }}
                                     >
                                         Reason for leaving this property (limit:
-                                        200 characters)
+                                        200 characters)*
                                     </FormHelperText>
                                     <TextareaAutosize
                                         minRows={5}
@@ -381,7 +406,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            First Name
+                                            First Name*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -407,7 +432,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Last Name
+                                            Last Name*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -466,7 +491,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Phone number
+                                            Phone number*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
