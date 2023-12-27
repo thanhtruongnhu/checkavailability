@@ -11,13 +11,13 @@ import PublishIcon from "@mui/icons-material/Publish";
 import { useRouter } from "next/router";
 import { getSuiteName, proxy } from "@utils/helper";
 import { Toaster, toast } from "sonner";
-import ApplicationInfoForm from "./subforms/ApplicationInfoForm";
-import RentalHistoryForm from "./subforms/RentalHistoryForm";
-import OccupantsForm from "./subforms/OccupantsForm";
-import VehicleForm from "./subforms/VehicleForm";
-import EmploymentForm from "./subforms/EmploymentForm";
-import ReferencesForm from "./subforms/ReferencesForm";
-import EmergencyContactForm from "./subforms/EmergencyContactForm";
+import ApplicationInfoForm from "@components/ApplicationDetails/subforms/ApplicationInfoForm";
+import RentalHistoryForm from "@components/ApplicationDetails/subforms/RentalHistoryForm";
+import OccupantsForm from "@components/ApplicationDetails/subforms/OccupantsForm";
+import VehicleForm from "@components/ApplicationDetails/subforms/VehicleForm";
+import EmploymentForm from "@components/ApplicationDetails/subforms/EmploymentForm";
+import ReferencesForm from "@components/ApplicationDetails/subforms/ReferencesForm";
+import EmergencyContactForm from "@components/ApplicationDetails/subforms/EmergencyContactForm";
 import useValidationApplication from "@utils/useValidationApplication";
 
 function getCurrentDateAsString() {
