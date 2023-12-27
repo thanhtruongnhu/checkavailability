@@ -17,14 +17,15 @@ const ApplicationInfoForm = ({
     formData,
     handleFieldChange,
     isSmallScreen,
-    fnameError,
-    lnameError,
-    dobError,
-    phoneError,
-    emailError,
-    licenseError,
-    provinceError,
-    moveinDateError
+    errors
+    // fnameError,
+    // lnameError,
+    // dobError,
+    // phoneError,
+    // emailError,
+    // licenseError,
+    // provinceError,
+    // moveinDateError
 }) => {
     return (
         <Box mt={"20px"}>
@@ -67,10 +68,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={
-                                fnameError && fnameError.length ? true : false
-                            }
-                            helperText={fnameError}
+                            error={errors?.firstName ? true : false}
+                            helperText={errors?.firstName}
                         />
                     </FormControl>
                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -100,10 +99,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={
-                                lnameError && lnameError.length ? true : false
-                            }
-                            helperText={lnameError}
+                            error={errors?.lastName ? true : false}
+                            helperText={errors?.lastName}
                         />
                     </FormControl>
                 </Stack>
@@ -131,7 +128,7 @@ const ApplicationInfoForm = ({
                                     newValue ? newValue.format() : ""
                                 )
                             }
-                            error={dobError && dobError.length ? true : false}
+                            error={errors?.dob ? true : false}
                             disableFuture
                         />
                     </Stack>
@@ -162,10 +159,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={
-                                phoneError && phoneError.length ? true : false
-                            }
-                            helperText={phoneError}
+                            error={errors?.phoneNumber ? true : false}
+                            helperText={errors?.phoneNumber}
                         />
                     </FormControl>
                 </Stack>
@@ -195,10 +190,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={
-                                emailError && emailError.length ? true : false
-                            }
-                            helperText={emailError}
+                            error={errors?.email ? true : false}
+                            helperText={errors?.email}
                         />
                     </FormControl>
 
@@ -226,12 +219,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={
-                                licenseError && licenseError.length
-                                    ? true
-                                    : false
-                            }
-                            helperText={licenseError}
+                            error={errors?.driverLicense ? true : false}
+                            helperText={errors?.driverLicense}
                         />
                     </FormControl>
                 </Stack>
@@ -260,12 +249,7 @@ const ApplicationInfoForm = ({
                             }
                             variant="outlined"
                             color="info"
-                            error={
-                                provinceError && provinceError.length
-                                    ? true
-                                    : false
-                            }
-                            // helperText={provinceError}
+                            error={errors?.province ? true : false}
                         >
                             {canadianProvinces.map((province, index) => (
                                 <MenuItem key={index} value={province}>
@@ -297,11 +281,7 @@ const ApplicationInfoForm = ({
                                     newValue ? newValue.format() : ""
                                 )
                             }
-                            error={
-                                moveinDateError && moveinDateError.length
-                                    ? true
-                                    : false
-                            }
+                            error={errors?.moveInDate ? true : false}
                             disablePast
                         />
                     </Stack>

@@ -297,14 +297,7 @@ const ApplicationDetails = ({ data }) => {
                             formData={formData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
-                            fnameError={errors.firstName}
-                            lnameError={errors.lastName}
-                            dobError={errors.dob}
-                            phoneError={errors.phoneNumber}
-                            emailError={errors.email}
-                            licenseError={errors.driverLicense}
-                            provinceError={errors.province}
-                            moveinDateError={errors.moveInDate}
+                            errors={errors}
                         />{" "}
                         {/* 2. Rental History */}
                         <RentalHistoryForm
