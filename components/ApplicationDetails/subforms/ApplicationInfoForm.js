@@ -132,7 +132,7 @@ const ApplicationInfoForm = ({
                                 )
                             }
                             error={dobError && dobError.length ? true : false}
-                            // helperText={dobError}
+                            disableFuture
                         />
                     </Stack>
                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -302,7 +302,7 @@ const ApplicationInfoForm = ({
                                     ? true
                                     : false
                             }
-                            // helperText={moveinDateError}
+                            disablePast
                         />
                     </Stack>
                 </Stack>

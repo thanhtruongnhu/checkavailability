@@ -130,15 +130,32 @@ const ApplicationDetails = ({ data }) => {
     const { errors, validateForm } = useValidation();
 
     const handleUpdateRoom = async () => {
-        if (!validateForm(formData)) {
+        const validationErrors = validateForm(formData, uploadedFile);
+
+        if (Object.keys(validationErrors).length) {
+            // Generic missing data error
             toast.error(
-                "Please fill in all required info before submit your application!",
+                "Please fill in all required info before submitting your application!",
                 {
                     position: "top-center"
                 }
             );
-            return; // Exit here if all required fields are not filled.
+            // Financial proof not uploaded error
+            if (validationErrors.fileUpload) {
+                toast.error(validationErrors.fileUpload, {
+                    position: "top-center"
+                });
+            }
+            // 2-year history violation error
+            if (validationErrors.totalDuration) {
+                toast.error(validationErrors.totalDuration, {
+                    position: "top-center"
+                });
+            }
+
+            return;
         }
+
         const sendingData = new FormData();
         // Append the file to the formData object
         // The 'file' should be a File or Blob object
@@ -292,16 +309,20 @@ const ApplicationDetails = ({ data }) => {
                         {/* 2. Rental History */}
                         <RentalHistoryForm
                             formData={formData}
+                            setFormData={setFormData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
+                            errors={errors.addresses || []}
                         />
                         {/* 3. Other Occupants */}
                         <OccupantsForm
                             formData={formData}
+                            setFormData={setFormData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
+                            errors={errors.occupants || []}
                         />
-                        {/* 4. Vehicle Info */}
+                        {/* 4. Vehicle Info (No validation needed) */}
                         <VehicleForm
                             formData={formData}
                             handleFieldChange={handleFieldChange}
@@ -312,17 +333,19 @@ const ApplicationDetails = ({ data }) => {
                             formData={formData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
+                            errors={errors.employment}
                         />
                         {/* 6. References Info */}
                         <ReferencesForm
                             formData={formData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
+                            errors={errors.reference}
                         />
                         {/* 7. Credit Report */}
                         <Box mt={"60px"} mb={"20px"}>
                             <Typography fontSize={20} fontWeight={700}>
-                                {"7. Proof of Financial Stability"}
+                                {"7. Financial Proof"}
                             </Typography>
                             <ListItem>
                                 Please upload either Credit report or bank
@@ -331,7 +354,7 @@ const ApplicationDetails = ({ data }) => {
                         </Box>
                         <Box>
                             <CustomButton
-                                title={"Upload*"}
+                                title={"Upload"}
                                 backgroundColor="#40cf38"
                                 color="#FCFCFC"
                                 icon={<PublishIcon />}
@@ -351,6 +374,7 @@ const ApplicationDetails = ({ data }) => {
                             formData={formData}
                             handleFieldChange={handleFieldChange}
                             isSmallScreen={isSmallScreen}
+                            errors={errors.emergency}
                         />
                         {/* Submit & Cancel buttons */}
                         <Stack

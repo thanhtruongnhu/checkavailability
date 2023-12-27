@@ -1,15 +1,17 @@
-// useValidation.js
-
 import { useState } from "react";
 import {
     validateApplicationInfo,
-    validateRentalHistory /*, other validators */
+    validateRentalHistory,
+    validateOccupantInfo,
+    validateEmploymentInfo,
+    validateReferenceInfo,
+    validateEmergencyContactInfo
 } from "./validation";
 
 const useValidation = () => {
     const [errors, setErrors] = useState({});
 
-    const validateForm = (formData) => {
+    const validateForm = (formData, uploadedFile) => {
         let newErrors = {};
         // ApplicationInfoForm Validation
         newErrors = {
@@ -20,13 +22,43 @@ const useValidation = () => {
         // RentalHistoryForm Validation
         newErrors = {
             ...newErrors,
-            ...validateRentalHistory(formData.tenants[0].addresses[0])
+            ...validateRentalHistory(formData.tenants[0])
         };
 
-        // Add other form validations...
+        // OccupantsForm Validation
+        newErrors = {
+            ...newErrors,
+            ...validateOccupantInfo(formData.tenants[0])
+        };
+
+        // EmploymentForm Validation
+        newErrors = {
+            ...newErrors,
+            ...validateEmploymentInfo(formData.tenants[0].employmentDetails)
+        };
+
+        // ReferencesForm Validation
+        newErrors = {
+            ...newErrors,
+            ...validateReferenceInfo(formData.tenants[0].additionalReference)
+        };
+
+        // EmergencyContactForm Validation
+        newErrors = {
+            ...newErrors,
+            ...validateEmergencyContactInfo(
+                formData.tenants[0].emergencyContact
+            )
+        };
+
+        // Check whether financial proof file is uploaded or not
+        if (!uploadedFile) {
+            newErrors.fileUpload =
+                "Please upload a credit report or bank statement!";
+        }
 
         setErrors(newErrors);
-        return !Object.keys(newErrors).length; // Returns true if no errors
+        return newErrors;
     };
 
     return { errors, validateForm };

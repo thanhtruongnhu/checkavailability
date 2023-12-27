@@ -11,7 +11,13 @@ import CustomButton from "@components/CustomComponents/CustomButton";
 import dayjs from "dayjs";
 import { ListItem, MenuItem, Select, TextareaAutosize } from "@mui/material";
 import { canadianProvinces } from "@utils/constants";
-const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
+const RentalHistoryForm = ({
+    formData,
+    setFormData,
+    handleFieldChange,
+    isSmallScreen,
+    errors
+}) => {
     const handleCreateAddress = (index) => {
         handleFieldChange(`tenants.0.addresses.${index}.streetNo`, "");
         handleFieldChange(`tenants.0.addresses.${index}.streetName`, "");
@@ -37,6 +43,19 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
         handleFieldChange(`tenants.0.addresses.${index}.landlord.phone`, "");
         handleFieldChange(`tenants.0.addresses.${index}.landlord.email`, "");
     };
+
+    const handleDeleteAddress = (index) => {
+        const updatedFormData = { ...formData };
+        if (!updatedFormData.tenants) {
+            updatedFormData.tenants = [];
+        }
+        if (updatedFormData._id === undefined) {
+            updatedFormData._id = "";
+        }
+        updatedFormData.tenants[0].addresses.splice(index, 1);
+        setFormData(updatedFormData);
+    };
+
     return (
         <Box mt={"60px"}>
             <Box mb={"20px"}>
@@ -95,6 +114,12 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.streetNo
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={errors[index]?.streetNo}
                                         />
                                     </FormControl>
                                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -120,6 +145,14 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     `tenants.0.addresses.${index}.streetName`,
                                                     e.target.value
                                                 )
+                                            }
+                                            error={
+                                                errors[index]?.streetName
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.streetName
                                             }
                                         />
                                     </FormControl>
@@ -153,6 +186,12 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.city
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={errors[index]?.city}
                                         />
                                     </FormControl>
 
@@ -177,6 +216,11 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.province
+                                                    ? true
+                                                    : false
+                                            }
                                             variant="outlined"
                                             color="info"
                                         >
@@ -194,32 +238,80 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                     </FormControl>
                                 </Stack>
 
-                                <FormControl sx={{ flex: 1 }} fullWidth>
-                                    <FormHelperText
-                                        sx={{
-                                            fontWeight: 500,
-                                            margin: "10px 0",
-                                            fontSize: 16,
-                                            color: "#11142d"
-                                        }}
-                                    >
-                                        Postal Code*
-                                    </FormHelperText>
-                                    <TextField
-                                        fullWidth
-                                        required
-                                        id={`postal-code-${index}`}
-                                        color="info"
-                                        variant="outlined"
-                                        value={address.postalCode}
-                                        onChange={(e) =>
-                                            handleFieldChange(
-                                                `tenants.0.addresses.${index}.postalCode`,
-                                                e.target.value
-                                            )
-                                        }
-                                    />
-                                </FormControl>
+                                <Stack
+                                    direction={isSmallScreen ? "column" : "row"}
+                                    gap={4}
+                                >
+                                    <FormControl sx={{ flex: 1 }} fullWidth>
+                                        <FormHelperText
+                                            sx={{
+                                                fontWeight: 500,
+                                                margin: "10px 0",
+                                                fontSize: 16,
+                                                color: "#11142d"
+                                            }}
+                                        >
+                                            Postal Code*
+                                        </FormHelperText>
+                                        <TextField
+                                            fullWidth
+                                            required
+                                            id={`postal-code-${index}`}
+                                            color="info"
+                                            variant="outlined"
+                                            value={address.postalCode}
+                                            onChange={(e) =>
+                                                handleFieldChange(
+                                                    `tenants.0.addresses.${index}.postalCode`,
+                                                    e.target.value
+                                                )
+                                            }
+                                            error={
+                                                errors[index]?.postalCode
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.postalCode
+                                            }
+                                        />
+                                    </FormControl>
+
+                                    <FormControl sx={{ flex: 1 }} fullWidth>
+                                        <FormHelperText
+                                            sx={{
+                                                fontWeight: 500,
+                                                margin: "10px 0",
+                                                fontSize: 16,
+                                                color: "#11142d"
+                                            }}
+                                        >
+                                            Are you the one who paid the
+                                            rental?*
+                                        </FormHelperText>
+                                        <Select
+                                            required
+                                            id={`notice-${index}`}
+                                            value={
+                                                address.paysRent ? "Yes" : "No"
+                                            }
+                                            onChange={(e) =>
+                                                handleFieldChange(
+                                                    `tenants.0.addresses.${index}.paysRent`,
+                                                    e.target.value
+                                                )
+                                            }
+                                            error={
+                                                errors[index]?.paysRent
+                                                    ? true
+                                                    : false
+                                            }
+                                        >
+                                            <MenuItem value="Yes">Yes</MenuItem>
+                                            <MenuItem value="No">No</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Stack>
 
                                 <Stack
                                     direction={isSmallScreen ? "column" : "row"}
@@ -249,6 +341,12 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                         : ""
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.since
+                                                    ? true
+                                                    : false
+                                            }
+                                            disableFuture
                                         />
                                     </Stack>
                                     <Stack flex={1} direction="column">
@@ -274,6 +372,10 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                         : ""
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.to ? true : false
+                                            }
+                                            disableFuture
                                         />
                                     </Stack>
                                 </Stack>
@@ -308,6 +410,11 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.hasGivenNotice
+                                                    ? true
+                                                    : false
+                                            }
                                         >
                                             <MenuItem value="Yes">Yes</MenuItem>
                                             <MenuItem value="No">No</MenuItem>
@@ -339,6 +446,12 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]
+                                                    ?.hasBeenAskedToLeave
+                                                    ? true
+                                                    : false
+                                            }
                                         >
                                             <MenuItem value="Yes">Yes</MenuItem>
                                             <MenuItem value="No">No</MenuItem>
@@ -346,7 +459,17 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                     </FormControl>
                                 </Stack>
 
-                                <FormControl sx={{ flex: 1 }} fullWidth>
+                                <FormControl
+                                    sx={{ flex: 1 }}
+                                    fullWidth
+                                    error={
+                                        errors[index]?.reasonForLeaving
+                                            ? true
+                                            : false
+                                    }
+                                    component="fieldset"
+                                    variant="outlined"
+                                >
                                     <FormHelperText
                                         sx={{
                                             fontWeight: 500,
@@ -377,6 +500,9 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                             )
                                         }
                                     />
+                                    <FormHelperText>
+                                        {errors[index]?.reasonForLeaving}
+                                    </FormHelperText>
                                 </FormControl>
                             </Box>
                             <Box
@@ -421,6 +547,16 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.landlord
+                                                    ?.firstName
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.landlord
+                                                    ?.firstName
+                                            }
                                         />
                                     </FormControl>
                                     <FormControl sx={{ flex: 1 }} fullWidth>
@@ -447,6 +583,16 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.landlord
+                                                    ?.lastName
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.landlord
+                                                    ?.lastName
+                                            }
                                         />
                                     </FormControl>
                                 </Stack>
@@ -465,7 +611,7 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Email
+                                            Email*
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -479,6 +625,14 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     `tenants.0.addresses.${index}.landlord.email`,
                                                     e.target.value
                                                 )
+                                            }
+                                            error={
+                                                errors[index]?.landlord?.email
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.landlord?.email
                                             }
                                         />
                                     </FormControl>
@@ -505,6 +659,14 @@ const RentalHistoryForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     `tenants.0.addresses.${index}.landlord.phone`,
                                                     e.target.value
                                                 )
+                                            }
+                                            error={
+                                                errors[index]?.landlord?.phone
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]?.landlord?.phone
                                             }
                                         />
                                     </FormControl>

@@ -12,7 +12,12 @@ import dayjs from "dayjs";
 import { employmentStatuses } from "@utils/constants";
 import { ListItem, MenuItem, Select, TextareaAutosize } from "@mui/material";
 import { canadianProvinces } from "@utils/constants";
-const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
+const EmploymentForm = ({
+    formData,
+    handleFieldChange,
+    isSmallScreen,
+    errors
+}) => {
     return (
         <Box
             sx={{
@@ -52,6 +57,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.employmentStatus ? true : false}
                         variant="outlined"
                         color="info"
                     >
@@ -81,14 +87,15 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                         variant="outlined"
                         value={formData.tenants[0].employmentDetails.employer}
                         // onChange={(e) =>
-                        //   handleNestedFieldChange("lastName", e.target.value)
-                        // }
+
                         onChange={(e) =>
                             handleFieldChange(
                                 `tenants.0.employmentDetails.employer`,
                                 e.target.value
                             )
                         }
+                        error={errors?.employer ? true : false}
+                        helperText={errors?.employer}
                     />
                 </FormControl>
             </Stack>
@@ -117,6 +124,8 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 newValue ? newValue.format() : ""
                             )
                         }
+                        error={errors?.since ? true : false}
+                        disableFuture
                     />
                 </Stack>
                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -143,6 +152,8 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.streetCity ? true : false}
+                        helperText={errors?.streetCity}
                     />
                 </FormControl>
             </Stack>
@@ -169,6 +180,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.province ? true : false}
                         variant="outlined"
                         color="info"
                     >
@@ -205,6 +217,8 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.positionTitle ? true : false}
+                        helperText={errors?.positionTitle}
                     />
                 </FormControl>
             </Stack>
@@ -236,6 +250,8 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.workSupervisor ? true : false}
+                        helperText={errors?.workSupervisor}
                     />
                 </FormControl>
                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -265,6 +281,8 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.workSupervisorPhone ? true : false}
+                        helperText={errors?.workSupervisorPhone}
                     />
                 </FormControl>
             </Stack>
@@ -278,7 +296,7 @@ const EmploymentForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                         color: "#11142d"
                     }}
                 >
-                    Do you have other sources of income?*
+                    Please list other sources of income (if applicable)?
                 </FormHelperText>
                 <TextField
                     fullWidth

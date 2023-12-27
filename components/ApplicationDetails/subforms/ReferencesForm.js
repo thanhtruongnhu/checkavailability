@@ -6,7 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
 import { ListItem } from "@mui/material";
-const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
+const ReferencesForm = ({
+    formData,
+    handleFieldChange,
+    isSmallScreen,
+    errors
+}) => {
     return (
         <Box
             sx={{
@@ -50,6 +55,8 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.name ? true : false}
+                        helperText={errors?.name}
                     />
                 </FormControl>
                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -78,6 +85,8 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.relationship ? true : false}
+                        helperText={errors?.relationship}
                     />
                 </FormControl>
             </Stack>
@@ -92,7 +101,7 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                             color: "#11142d"
                         }}
                     >
-                        Email address*
+                        Email address
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -135,6 +144,8 @@ const ReferencesForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                 e.target.value
                             )
                         }
+                        error={errors?.phoneNumber ? true : false}
+                        helperText={errors?.phoneNumber}
                     />
                 </FormControl>
             </Stack>

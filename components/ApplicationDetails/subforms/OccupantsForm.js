@@ -9,7 +9,13 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Add, Delete } from "@mui/icons-material";
 import CustomButton from "@components/CustomComponents/CustomButton";
 import dayjs from "dayjs";
-const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
+const OccupantsForm = ({
+    formData,
+    setFormData,
+    handleFieldChange,
+    isSmallScreen,
+    errors
+}) => {
     const handleCreateOccupant = (index) => {
         handleFieldChange(`tenants.0.occupants.${index}.name`, "");
         handleFieldChange(`tenants.0.occupants.${index}.dob`, "");
@@ -92,6 +98,12 @@ const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     e.target.value
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.name
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={errors[index]?.name}
                                         />
                                     </FormControl>
                                     <Stack flex={1} direction="column">
@@ -108,8 +120,6 @@ const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                             </FormHelperText>
                                         </FormControl>
                                         <DatePicker
-                                            //   value={dobMain} // You may want to set this to the occupant's DOB
-                                            // onChange={(newValue) => console.log(newValue)}
                                             defaultValue={dayjs(occupant.dob)}
                                             onChange={(newValue) =>
                                                 handleFieldChange(
@@ -119,6 +129,12 @@ const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                         : ""
                                                 )
                                             }
+                                            error={
+                                                errors[index]?.dob
+                                                    ? true
+                                                    : false
+                                            }
+                                            disableFuture
                                         />
                                     </Stack>
                                 </Stack>
@@ -150,6 +166,16 @@ const OccupantsForm = ({ formData, handleFieldChange, isSmallScreen }) => {
                                                     `tenants.0.occupants.${index}.relationToApplicant`,
                                                     e.target.value
                                                 )
+                                            }
+                                            error={
+                                                errors[index]
+                                                    ?.relationToApplicant
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                errors[index]
+                                                    ?.relationToApplicant
                                             }
                                         />
                                     </FormControl>

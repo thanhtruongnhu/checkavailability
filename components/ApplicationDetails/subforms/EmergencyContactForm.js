@@ -8,7 +8,8 @@ import TextField from "@mui/material/TextField";
 const EmergencyContactForm = ({
     formData,
     handleFieldChange,
-    isSmallScreen
+    isSmallScreen,
+    errors
 }) => {
     return (
         <Box
@@ -49,6 +50,8 @@ const EmergencyContactForm = ({
                                 e.target.value
                             )
                         }
+                        error={errors?.name ? true : false}
+                        helperText={errors?.name}
                     />
                 </FormControl>
                 <FormControl sx={{ flex: 1 }} fullWidth>
@@ -77,6 +80,8 @@ const EmergencyContactForm = ({
                                 e.target.value
                             )
                         }
+                        error={errors?.relationship ? true : false}
+                        helperText={errors?.relationship}
                     />
                 </FormControl>
             </Stack>
@@ -91,7 +96,7 @@ const EmergencyContactForm = ({
                             color: "#11142d"
                         }}
                     >
-                        Email address*
+                        Email address
                     </FormHelperText>
                     <TextField
                         fullWidth
@@ -132,6 +137,8 @@ const EmergencyContactForm = ({
                                 e.target.value
                             )
                         }
+                        error={errors?.phoneNumber ? true : false}
+                        helperText={errors?.phoneNumber}
                     />
                 </FormControl>
             </Stack>
