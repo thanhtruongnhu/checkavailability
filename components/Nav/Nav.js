@@ -16,7 +16,7 @@ const navigation = [
     },
     {
         name: "CHECK AVAILABILITY",
-        href: "http://localhost:3001/"
+        href: "https://checkavailability.vercel.app/"
         // target: "_blank"
     }
 ];

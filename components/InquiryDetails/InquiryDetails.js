@@ -143,10 +143,7 @@ const InquiryDetails = ({ data }) => {
                                 }`}
                             >
                                 <div>
-                                    <Typography
-                                        variant="h5"
-                                        className="font-bold mb-4"
-                                    >
+                                    <Typography fontSize={25} fontWeight={700}>
                                         We&apos;re always happy to answer!
                                     </Typography>
                                     <Typography

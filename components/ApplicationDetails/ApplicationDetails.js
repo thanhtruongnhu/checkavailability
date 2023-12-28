@@ -236,10 +236,7 @@ const ApplicationDetails = ({ data }) => {
                                 }`}
                             >
                                 <div>
-                                    <Typography
-                                        variant="h5"
-                                        className="font-bold mb-4"
-                                    >
+                                    <Typography fontSize={30} fontWeight={700}>
                                         Rental Application
                                     </Typography>
                                     <Typography

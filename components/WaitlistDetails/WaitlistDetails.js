@@ -163,11 +163,8 @@ const WaitlistDetails = ({ data }) => {
                                 }`}
                             >
                                 <div>
-                                    <Typography
-                                        variant="h5"
-                                        className="font-bold mb-4"
-                                    >
-                                        Welcome to our wait list!
+                                    <Typography fontSize={25} fontWeight={700}>
+                                        Join Our Exclusive Waiting List!
                                     </Typography>
                                     <Typography
                                         variant="h7"
