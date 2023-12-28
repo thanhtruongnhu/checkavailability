@@ -9,7 +9,7 @@ import theme from "@components/CustomComponents/theme";
 import CustomButton from "@components/CustomComponents/CustomButton";
 import PublishIcon from "@mui/icons-material/Publish";
 import { useRouter } from "next/router";
-import { getSuiteName, proxy } from "@utils/helper";
+import { getSuiteName, hasErrors, proxy } from "@utils/helper";
 import { Toaster, toast } from "sonner";
 import ApplicationInfoForm from "@components/ApplicationDetails/subforms/ApplicationInfoForm";
 import RentalHistoryForm from "@components/ApplicationDetails/subforms/RentalHistoryForm";
@@ -127,10 +127,12 @@ const ApplicationDetails = ({ data }) => {
 
     const { errors, validateForm } = useValidationApplication();
 
+    console.log("formData", formData);
+
     const handleUpdateRoom = async () => {
         const validationErrors = validateForm(formData, uploadedFile);
 
-        if (Object.keys(validationErrors).length) {
+        if (hasErrors(validationErrors)) {
             // Generic missing data error
             toast.error(
                 "Please fill in all required info before submitting your application!",
@@ -138,6 +140,7 @@ const ApplicationDetails = ({ data }) => {
                     position: "top-center"
                 }
             );
+            console.log("Errors:", errors);
             // Financial proof not uploaded error
             if (validationErrors.fileUpload) {
                 toast.error(validationErrors.fileUpload, {

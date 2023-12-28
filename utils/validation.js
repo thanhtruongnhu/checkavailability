@@ -81,27 +81,29 @@ const validateRentalHistory = (data) => {
         if (!address.to || !address.to.length) {
             addressError.to = `Address ${index + 1}: End date is required`;
         }
-        // paysRent validation
-        if (!address.paysRent || !address.paysRent.length) {
-            addressError.paysRent = `Address ${
-                index + 1
-            }: paysRent is required`;
-        }
-        // hasGivenNotice validation
-        if (!address.hasGivenNotice || !address.hasGivenNotice.length) {
-            addressError.hasGivenNotice = `Address ${
-                index + 1
-            }: hasGivenNotice is required`;
-        }
-        // hasBeenAskedToLeave validation
-        if (
-            !address.hasBeenAskedToLeave ||
-            !address.hasBeenAskedToLeave.length
-        ) {
-            addressError.hasBeenAskedToLeave = `Address ${
-                index + 1
-            }: hasBeenAskedToLeave is required`;
-        }
+        // The below 3 validations are commented out because they're dropdown list with predefined options: yes and no. Meaning that there will be always an option even if the user doesn't select anything. Hence, no need to validate whether there's input in these fields: paysRent, hasGivenNotice and hasBeenAskedToLeave.
+        // // paysRent validation
+        // if (!address.paysRent || !address.paysRent.length) {
+        //     addressError.paysRent = `Address ${
+        //         index + 1
+        //     }: paysRent is required`;
+        // }
+        // // hasGivenNotice validation
+        // if (!address.hasGivenNotice || !address.hasGivenNotice.length) {
+        //     addressError.hasGivenNotice = `Address ${
+        //         index + 1
+        //     }: hasGivenNotice is required`;
+        // }
+        // // hasBeenAskedToLeave validation
+        // if (
+        //     !address.hasBeenAskedToLeave ||
+        //     !address.hasBeenAskedToLeave.length
+        // ) {
+        //     addressError.hasBeenAskedToLeave = `Address ${
+        //         index + 1
+        //     }: hasBeenAskedToLeave is required`;
+        // }
+
         // reasonForLeaving validation
         if (!address.reasonForLeaving || !address.reasonForLeaving.length) {
             addressError.reasonForLeaving = `Address ${
@@ -115,28 +117,27 @@ const validateRentalHistory = (data) => {
             )})`;
         }
 
-        addressError.landlord = {};
         // landlord's firstName validation
         if (!address.landlord.firstName || !address.landlord.firstName.length) {
-            addressError.landlord.firstName = `Address ${
+            addressError.landlordFirstName = `Address ${
                 index + 1
             }: landlord's first name is required`;
         }
         // landlord's lastName validation
         if (!address.landlord.lastName || !address.landlord.lastName.length) {
-            addressError.landlord.lastName = `Address ${
+            addressError.landlordLastName = `Address ${
                 index + 1
             }: landlord's last name is required`;
         }
         // landlord's phone validation
         if (!address.landlord.phone || !address.landlord.phone.length) {
-            addressError.landlord.phone = `Address ${
+            addressError.landlordPhone = `Address ${
                 index + 1
             }: landlord's phone number is required`;
         }
         // landlord's email validation
         if (!address.landlord.email || !address.landlord.email.length) {
-            addressError.landlord.email = `Address ${
+            addressError.landlordEmail = `Address ${
                 index + 1
             }: landlord's email address is required`;
         }

@@ -176,3 +176,18 @@ export function processInquiryData(jsonData) {
 }
 
 export const proxy = "https://globalsolusap.com";
+
+export const hasErrors = (errors) => {
+    for (const key in errors) {
+        if (errors.hasOwnProperty(key)) {
+            if (typeof errors[key] === "object" && errors[key] !== null) {
+                if (Object.keys(errors[key]).length !== 0) {
+                    return true;
+                }
+            } else if (errors[key]) {
+                return true;
+            }
+        }
+    }
+    return false;
+};

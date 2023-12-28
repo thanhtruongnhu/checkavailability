@@ -301,11 +301,11 @@ const RentalHistoryForm = ({
                                                     e.target.value
                                                 )
                                             }
-                                            error={
-                                                errors[index]?.paysRent
-                                                    ? true
-                                                    : false
-                                            }
+                                            // error={
+                                            //     errors[index]?.paysRent
+                                            //         ? true
+                                            //         : false
+                                            // }
                                         >
                                             <MenuItem value="Yes">Yes</MenuItem>
                                             <MenuItem value="No">No</MenuItem>
@@ -410,11 +410,11 @@ const RentalHistoryForm = ({
                                                     e.target.value
                                                 )
                                             }
-                                            error={
-                                                errors[index]?.hasGivenNotice
-                                                    ? true
-                                                    : false
-                                            }
+                                            // error={
+                                            //     errors[index]?.hasGivenNotice
+                                            //         ? true
+                                            //         : false
+                                            // }
                                         >
                                             <MenuItem value="Yes">Yes</MenuItem>
                                             <MenuItem value="No">No</MenuItem>
@@ -446,12 +446,12 @@ const RentalHistoryForm = ({
                                                     e.target.value
                                                 )
                                             }
-                                            error={
-                                                errors[index]
-                                                    ?.hasBeenAskedToLeave
-                                                    ? true
-                                                    : false
-                                            }
+                                            // error={
+                                            //     errors[index]
+                                            //         ?.hasBeenAskedToLeave
+                                            //         ? true
+                                            //         : false
+                                            // }
                                         >
                                             <MenuItem value="Yes">Yes</MenuItem>
                                             <MenuItem value="No">No</MenuItem>
@@ -548,14 +548,12 @@ const RentalHistoryForm = ({
                                                 )
                                             }
                                             error={
-                                                errors[index]?.landlord
-                                                    ?.firstName
+                                                errors[index]?.landlordFirstName
                                                     ? true
                                                     : false
                                             }
                                             helperText={
-                                                errors[index]?.landlord
-                                                    ?.firstName
+                                                errors[index]?.landlordFirstName
                                             }
                                         />
                                     </FormControl>
@@ -584,14 +582,12 @@ const RentalHistoryForm = ({
                                                 )
                                             }
                                             error={
-                                                errors[index]?.landlord
-                                                    ?.lastName
+                                                errors[index]?.landlordLastName
                                                     ? true
                                                     : false
                                             }
                                             helperText={
-                                                errors[index]?.landlord
-                                                    ?.lastName
+                                                errors[index]?.landlordLastName
                                             }
                                         />
                                     </FormControl>
@@ -627,12 +623,12 @@ const RentalHistoryForm = ({
                                                 )
                                             }
                                             error={
-                                                errors[index]?.landlord?.email
+                                                errors[index]?.landlordEmail
                                                     ? true
                                                     : false
                                             }
                                             helperText={
-                                                errors[index]?.landlord?.email
+                                                errors[index]?.landlordEmail
                                             }
                                         />
                                     </FormControl>
@@ -661,12 +657,12 @@ const RentalHistoryForm = ({
                                                 )
                                             }
                                             error={
-                                                errors[index]?.landlord?.phone
+                                                errors[index]?.landlordPhone
                                                     ? true
                                                     : false
                                             }
                                             helperText={
-                                                errors[index]?.landlord?.phone
+                                                errors[index]?.landlordPhone
                                             }
                                         />
                                     </FormControl>
