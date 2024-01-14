@@ -22,10 +22,10 @@ const validateApplicationInfo = (data) => {
     if (!data.email || !data.email.length) {
         errors.email = "Email is required";
     }
-    // Driver license validation
-    if (!data.driverLicense || !data.driverLicense.length) {
-        errors.driverLicense = "Driver license is required";
-    }
+    // // Driver license validation
+    // if (!data.driverLicense || !data.driverLicense.length) {
+    //     errors.driverLicense = "Driver license is required";
+    // }
     // Province validation
     if (!data.province || !data.province.length) {
         errors.province = "Province is required";

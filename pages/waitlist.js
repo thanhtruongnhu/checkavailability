@@ -1,4 +1,5 @@
 import { Layout } from "@components/Layout";
+import SEO from "@components/SEO/SEO";
 import WaitlistDetails from "@components/WaitlistDetails/WaitlistDetails";
 import { useRouter } from "next/router";
 
@@ -8,6 +9,10 @@ const Inquiry = () => {
 
     return (
         <Layout>
+            <SEO
+                title="Wait List - Tranquility Place"
+                description="Enter the luxury of living within a few clicks!"
+            />
             <div className="main-wrapper relative z-10 pb-20 pt-20 ">
                 <WaitlistDetails data={data} />
             </div>

@@ -65,7 +65,7 @@ const SEO = ({ title, description, keywords }) => {
             <link
                 rel="mask-icon"
                 href="/safari-pinned-tab.svg"
-                color="#5bbad5"
+                // color="#5bbad5"
             />
             {/* Title */}
             <title>{title}</title>

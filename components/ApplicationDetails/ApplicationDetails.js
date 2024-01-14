@@ -278,13 +278,23 @@ const ApplicationDetails = ({ data }) => {
                                     be accurate, as it will undergo scrutiny.
                                 </ListItem>
                                 <ListItem>
-                                    3. Change to other pages or exit this page
+                                    3. In Section 7 of the application, it's
+                                    mandatory to submit a financial proof
+                                    document in PDF format. Acceptable documents
+                                    include credit reports, bank statements,
+                                    proof of employment, among others. Please
+                                    note, if you do not provide this required
+                                    document, you will be unable to submit the
+                                    application form.
+                                </ListItem>
+                                <ListItem>
+                                    4. Change to other pages or exit this page
                                     will cause data loss. Remain in this page
                                     until you finish filling the form and
                                     Submit.
                                 </ListItem>
                                 <ListItem>
-                                    4. Please fill in all required fields with
+                                    5. Please fill in all required fields with
                                     asterisk *
                                 </ListItem>
                             </List>

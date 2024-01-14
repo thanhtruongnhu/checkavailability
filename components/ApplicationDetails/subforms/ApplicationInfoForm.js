@@ -18,14 +18,6 @@ const ApplicationInfoForm = ({
     handleFieldChange,
     isSmallScreen,
     errors
-    // fnameError,
-    // lnameError,
-    // dobError,
-    // phoneError,
-    // emailError,
-    // licenseError,
-    // provinceError,
-    // moveinDateError
 }) => {
     return (
         <Box mt={"20px"}>
@@ -90,9 +82,6 @@ const ApplicationInfoForm = ({
                             color="info"
                             variant="outlined"
                             value={formData.tenants[0].lastName}
-                            // onChange={(e) =>
-                            //   handleNestedFieldChange("lastName", e.target.value)
-                            // }
                             onChange={(e) =>
                                 handleFieldChange(
                                     `tenants.0.lastName`,
@@ -150,9 +139,6 @@ const ApplicationInfoForm = ({
                             color="info"
                             variant="outlined"
                             value={formData.tenants[0].phoneNumber}
-                            // onChange={(e) =>
-                            //   handleNestedFieldChange("phoneNumber", e.target.value)
-                            // }
                             onChange={(e) =>
                                 handleFieldChange(
                                     `tenants.0.phoneNumber`,
@@ -204,7 +190,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Driver license #*
+                            Driver license #
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -219,8 +205,8 @@ const ApplicationInfoForm = ({
                                     e.target.value
                                 )
                             }
-                            error={errors?.driverLicense ? true : false}
-                            helperText={errors?.driverLicense}
+                            // error={errors?.driverLicense ? true : false}
+                            // helperText={errors?.driverLicense}
                         />
                     </FormControl>
                 </Stack>

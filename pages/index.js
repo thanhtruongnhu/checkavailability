@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <Layout className="">
             <SEO
-                title="Tranquility Place - Check Availability"
+                title="Check Availability - Tranquility Place"
                 description="Enter the luxury of living within a few clicks!"
             />
             <div className="main-wrapper relative z-10 pb-20 pt-20 ">
