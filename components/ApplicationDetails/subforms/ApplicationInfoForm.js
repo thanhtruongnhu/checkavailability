@@ -190,7 +190,7 @@ const ApplicationInfoForm = ({
                                 color: "#11142d"
                             }}
                         >
-                            Driver license #
+                            Driver license # - not required
                         </FormHelperText>
                         <TextField
                             fullWidth

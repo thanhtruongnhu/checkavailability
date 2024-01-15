@@ -136,11 +136,11 @@ const validateRentalHistory = (data) => {
             }: landlord's phone number is required`;
         }
         // landlord's email validation
-        if (!address.landlord.email || !address.landlord.email.length) {
-            addressError.landlordEmail = `Address ${
-                index + 1
-            }: landlord's email address is required`;
-        }
+        // if (!address.landlord.email || !address.landlord.email.length) {
+        //     addressError.landlordEmail = `Address ${
+        //         index + 1
+        //     }: landlord's email address is required`;
+        // }
 
         // rental time accumulation
         if (address.since && address.to) {

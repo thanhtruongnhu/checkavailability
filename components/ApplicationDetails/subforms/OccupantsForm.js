@@ -197,7 +197,9 @@ const OccupantsForm = ({
                     ))
                 ) : (
                     <div>
-                        (Please click the button below to add other occupants!)
+                        (Please include all occupants that will reside in the
+                        apartment. Please click the button below to add other
+                        occupants!)
                     </div>
                 )}
             </div>

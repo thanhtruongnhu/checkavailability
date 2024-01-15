@@ -607,7 +607,7 @@ const RentalHistoryForm = ({
                                                 color: "#11142d"
                                             }}
                                         >
-                                            Email*
+                                            Email - not required
                                         </FormHelperText>
                                         <TextField
                                             fullWidth
@@ -622,14 +622,14 @@ const RentalHistoryForm = ({
                                                     e.target.value
                                                 )
                                             }
-                                            error={
-                                                errors[index]?.landlordEmail
-                                                    ? true
-                                                    : false
-                                            }
-                                            helperText={
-                                                errors[index]?.landlordEmail
-                                            }
+                                            // error={
+                                            //     errors[index]?.landlordEmail
+                                            //         ? true
+                                            //         : false
+                                            // }
+                                            // helperText={
+                                            //     errors[index]?.landlordEmail
+                                            // }
                                         />
                                     </FormControl>
                                     <FormControl sx={{ flex: 1 }} fullWidth>

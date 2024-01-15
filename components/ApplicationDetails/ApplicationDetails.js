@@ -278,14 +278,9 @@ const ApplicationDetails = ({ data }) => {
                                     be accurate, as it will undergo scrutiny.
                                 </ListItem>
                                 <ListItem>
-                                    3. In Section 7 of the application,
-                                    it&apos;s mandatory to submit a financial
-                                    proof document in PDF format. Acceptable
-                                    documents include credit reports, bank
-                                    statements, proof of employment, among
-                                    others. Please note, if you do not provide
-                                    this required document, you will be unable
-                                    to submit the application form.
+                                    3. Please have a credit report and/or proof
+                                    of employment ready to be attached to the
+                                    application.
                                 </ListItem>
                                 <ListItem>
                                     4. Change to other pages or exit this page
@@ -349,8 +344,8 @@ const ApplicationDetails = ({ data }) => {
                                 {"7. Financial Proof"}
                             </Typography>
                             <ListItem>
-                                Please upload either Credit report or bank
-                                statements.*
+                                Please upload either Credit report, Bank
+                                Statements, and/or Proof of Employment.*
                             </ListItem>
                         </Box>
                         <Box>
