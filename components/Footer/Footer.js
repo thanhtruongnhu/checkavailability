@@ -1,8 +1,8 @@
 import Image from "next/image";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PhoneIcon from "@mui/icons-material/Phone";
-import HomeIcon from "@mui/icons-material/Home";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 export const Footer = () => {
@@ -72,9 +72,9 @@ export const Footer = () => {
                     </div>
                     <div className="flex flex-col w-full md:w-1/3 mt-16 mb-5 md:mb-0 ">
                         <div className="flex items-center mb-2">
-                            <HomeIcon />
+                            <ApartmentIcon />
                             <span className="ml-2">
-                                2 Birchwood Lane, Stratford, PEI C1B 3Z1
+                                16 Elena Court, Charlottetown, PE C1C 0B2
                             </span>
                         </div>
                         <div className="flex items-center mb-2">
