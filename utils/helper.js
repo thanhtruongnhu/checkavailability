@@ -63,7 +63,7 @@ export function getImagePath(suiteType) {
             imagePath = "/DoubleA.jpg";
             break;
         case "652423bb11b2d3123e9e93ea":
-            imagePath = "/DoubleB.jpg";
+            imagePath = "/DoubleSuiteB.jpg";
             break;
         case "652423bb11b2d3123e9e93eb":
             imagePath = "/DoubleSuiteC.jpg";
