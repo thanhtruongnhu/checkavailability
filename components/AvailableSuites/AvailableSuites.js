@@ -4,6 +4,7 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import { formatDate, getImagePath, getSuiteName, proxy } from "@utils/helper";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const SuiteCard = ({ suite }) => {
     const router = useRouter();
@@ -34,11 +35,21 @@ const SuiteCard = ({ suite }) => {
             className="rounded-lg p-4 flex flex-col md:flex-row items-stretch mb-16 custom-parentdiv-width"
             style={{ backgroundColor: "#f6f6f6" }} // Ensure the parent div is full-width on smaller screens and has a max-width set for larger screens
         >
-            <div className="hide-on-767px w-72 h-96 flex-shrink-0">
+            {/* <div className="hide-on-767px w-72 h-96 flex-shrink-0">
                 <img
                     src={suite.imageUrl}
                     alt={suite.name}
                     className="object-cover w-full h-full rounded-lg" // Image will cover the full area of its container
+                />
+            </div> */}
+
+            <div className="hide-on-767px w-72 h-96 flex-shrink-0 relative rounded-lg">
+                <Image
+                    src={suite.imageUrl}
+                    alt={suite.name}
+                    layout="fill"
+                    objectFit="fill" // This will stretch the image to fill the container
+                    className="rounded-lg"
                 />
             </div>
             <div className="flex flex-col justify-between flex-grow p-4">

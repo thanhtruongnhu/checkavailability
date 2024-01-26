@@ -10,4 +10,8 @@
             display: none;
         }
     }
+    .image-container {
+        width: auto; /* Full width */
+        height: 100; /* Height will be auto-adjusted */
+    }
 }

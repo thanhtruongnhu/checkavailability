@@ -11,7 +11,9 @@ const suites = [
             { icon: <BathtubIcon style={{ color: "#a0c020" }} />, text: "1" }
         ],
         description: "one bedroom, one bathroom",
-        squareFeet: "864 sq.ft."
+        squareFeet: "864 sq.ft.",
+        floorPlanUrl:
+            "https://tranquilityplacepei.ca/wp-content/uploads/2020/06/type4.pdf"
     },
     {
         id: 2,
@@ -23,7 +25,9 @@ const suites = [
         description:
             "ground level, one bedroom, one wheelchair accessible bathroom",
         // description: "ground level, one bedroom",
-        squareFeet: "864 sq.ft."
+        squareFeet: "864 sq.ft.",
+        floorPlanUrl:
+            "https://tranquilityplacepei.ca/wp-content/uploads/2020/06/type3.pdf"
     },
     {
         id: 3,
@@ -33,7 +37,9 @@ const suites = [
             { icon: <BathtubIcon style={{ color: "#a0c020" }} />, text: "1" }
         ],
         description: "two bedroom, one bathroom",
-        squareFeet: "1090 sq.ft."
+        squareFeet: "1090 sq.ft.",
+        floorPlanUrl:
+            "https://tranquilityplacepei.ca/wp-content/uploads/2020/06/type3a.pdf"
     },
     {
         id: 4,
@@ -43,7 +49,9 @@ const suites = [
             { icon: <BathtubIcon style={{ color: "#a0c020" }} />, text: "2" }
         ],
         description: "two bedroom, two bathroom",
-        squareFeet: "1041 sq.ft."
+        squareFeet: "1041 sq.ft.",
+        floorPlanUrl:
+            "https://tranquilityplacepei.ca/wp-content/uploads/2020/06/type1.pdf"
     },
     {
         id: 5,
@@ -53,7 +61,9 @@ const suites = [
             { icon: <BathtubIcon style={{ color: "#a0c020" }} />, text: "2" }
         ],
         description: "two bedroom, two bathroom",
-        squareFeet: "1120 sq.ft."
+        squareFeet: "1120 sq.ft.",
+        floorPlanUrl:
+            "https://tranquilityplacepei.ca/wp-content/uploads/2020/06/type2.pdf"
     }
 ];
 
@@ -106,7 +116,12 @@ const Offers = () => {
                             <p className="text-gray-600 mb-4 text-center font-bold">
                                 {suite.squareFeet}
                             </p>
-                            <button className="text-[#a0c020] hover:text-green-800 transition-colors">
+                            <button
+                                className="text-[#a0c020] hover:text-green-800 transition-colors"
+                                onClick={() =>
+                                    window.open(suite.floorPlanUrl, "_blank")
+                                }
+                            >
                                 Floor Plan &gt;
                             </button>
                         </div>

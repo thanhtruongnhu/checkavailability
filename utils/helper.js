@@ -54,16 +54,16 @@ export function getImagePath(suiteType) {
 
     switch (suiteType) {
         case "652423bb11b2d3123e9e93e7":
-            imagePath = "/SingleSuiteA.jpg";
+            imagePath = "/SingleA.jpg";
             break;
         case "652423bb11b2d3123e9e93e8":
-            imagePath = "/SingleSuiteB.jpg";
+            imagePath = "/SingleB.jpg";
             break;
         case "652423bb11b2d3123e9e93e9":
-            imagePath = "/DoubleSuiteA.jpg";
+            imagePath = "/DoubleA.jpg";
             break;
         case "652423bb11b2d3123e9e93ea":
-            imagePath = "/DoubleSuiteB.jpg";
+            imagePath = "/DoubleB.jpg";
             break;
         case "652423bb11b2d3123e9e93eb":
             imagePath = "/DoubleSuiteC.jpg";
